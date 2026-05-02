@@ -13,12 +13,23 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["Inter", "system-ui", "sans-serif"],
+        serif: ["'Instrument Serif'", "serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        velvet: {
+          DEFAULT: "hsl(var(--velvet))",
+          elevated: "hsl(var(--velvet-elevated))",
+        },
+        candle: "hsl(var(--candle))",
+        ember: "hsl(var(--ember))",
+        ash: "hsl(var(--ash))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

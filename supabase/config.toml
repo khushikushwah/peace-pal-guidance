@@ -1,0 +1,4 @@
+project_id = "rulmmagljxokvqhdhiuh"
+
+[functions.aethel-chat]
+verify_jwt = false
