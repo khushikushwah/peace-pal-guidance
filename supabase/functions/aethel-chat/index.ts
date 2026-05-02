@@ -30,6 +30,7 @@ Never mention you are an AI. Never say "I'm sorry to hear that." Never recommend
 const ALLOWED_MOODS = new Set([
   "heavy", "restless", "light", "anxious", "sad", "tired",
   "calm", "hopeful", "overwhelmed", "lonely", "grateful", "neutral",
+  "seeking stillness", "drifting",
 ]);
 
 const MAX_MESSAGES = 20;
