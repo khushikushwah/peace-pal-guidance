@@ -3,6 +3,8 @@ import { MoodSelector, Mood } from "@/components/MoodSelector";
 import { VoiceOrb } from "@/components/VoiceOrb";
 import { SuggestionGrid } from "@/components/SuggestionGrid";
 import { ConversationPanel } from "@/components/ConversationPanel";
+import { RecipesSection } from "@/components/RecipesSection";
+import { SongsSection } from "@/components/SongsSection";
 
 const greet = () => {
   const h = new Date().getHours();
@@ -86,6 +88,12 @@ const Index = () => {
 
         {/* Suggestions */}
         <SuggestionGrid onPick={(p) => beginConversation(p)} />
+
+        {/* Recipes */}
+        <RecipesSection />
+
+        {/* Songs */}
+        <SongsSection />
 
         {/* Footer affirmation */}
         <footer className="mt-32 text-center">
