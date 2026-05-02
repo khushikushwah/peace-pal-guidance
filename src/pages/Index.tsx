@@ -89,6 +89,12 @@ const Index = () => {
         {/* Suggestions */}
         <SuggestionGrid onPick={(p) => beginConversation(p)} />
 
+        {/* Recipes */}
+        <RecipesSection />
+
+        {/* Songs */}
+        <SongsSection />
+
         {/* Footer affirmation */}
         <footer className="mt-32 text-center">
           <div className="mx-auto mb-6 h-px w-24 bg-gradient-to-r from-transparent via-candle/40 to-transparent" />
