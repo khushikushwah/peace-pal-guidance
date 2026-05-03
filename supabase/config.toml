@@ -2,3 +2,6 @@ project_id = "rulmmagljxokvqhdhiuh"
 
 [functions.aethel-chat]
 verify_jwt = false
+
+[functions.aethel-workflow]
+verify_jwt = false
