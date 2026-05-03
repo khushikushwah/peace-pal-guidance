@@ -37,7 +37,7 @@ Through mood-based conversations, calming recipes, and curated music, Aethel cre
 
 ## 📂 Project Structure
 
----
+```
 
 src/
 ├─ components/        # MoodSelector, VoiceOrb, RecipesSection, SongsSection
@@ -48,7 +48,7 @@ src/
 supabase/functions/    # Edge functions (chat + validation)
 public/                # Assets (favicon, placeholders)
 
----
+```
 
 ## 🧾 License
 This project is licensed under the MIT License.
