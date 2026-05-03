@@ -4,6 +4,15 @@
 
 ---
 
+## 🧩 Human System Addressed
+Aethel models the **human system of stress management and emotional regulation**.  
+It uses AI to guide calming routines, mindfulness prompts, and holistic relief (recipes, music, games), helping users regulate emotions and reduce stress in daily life.
+
+
+---
+
+---
+
 ## ✨ Overview
 Serene Companion is a web app designed to gently guide users toward peace of mind.  
 Through mood-based conversations, calming recipes, and curated music, Aethel creates a sanctuary where you can share what weighs on you and find relief.
