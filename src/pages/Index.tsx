@@ -5,6 +5,8 @@ import { SuggestionGrid } from "@/components/SuggestionGrid";
 import { ConversationPanel } from "@/components/ConversationPanel";
 import { RecipesSection } from "@/components/RecipesSection";
 import { SongsSection } from "@/components/SongsSection";
+import { WorkflowJourney } from "@/components/WorkflowJourney";
+import { Sparkles } from "lucide-react";
 
 const greet = () => {
   const h = new Date().getHours();
@@ -19,6 +21,7 @@ const Index = () => {
   const [mood, setMood] = useState<Mood>("Seeking Stillness");
   const [open, setOpen] = useState(false);
   const [initial, setInitial] = useState<string | null>(null);
+  const [journeyOpen, setJourneyOpen] = useState(false);
   const [time, setTime] = useState("");
 
   useEffect(() => {
@@ -84,6 +87,17 @@ const Index = () => {
           <p className="mt-10 text-ash font-serif italic text-xl text-center max-w-[36ch]">
             Aethel is listening, with patience and warmth.
           </p>
+
+          <button
+            onClick={() => setJourneyOpen(true)}
+            className="mt-10 group inline-flex items-center gap-3 px-7 py-3 rounded-full border border-candle/40 bg-candle/5 text-candle text-xs tracking-[0.3em] uppercase font-light hover:bg-candle/10 hover:shadow-[0_0_30px_-5px_hsl(var(--candle)/0.5)] transition-all duration-500"
+          >
+            <Sparkles className="size-3.5 group-hover:rotate-12 transition-transform" />
+            Begin a 5-step journey
+          </button>
+          <p className="mt-3 text-[10px] tracking-[0.3em] uppercase text-ash/70">
+            Share · Reflect · Breathe · Act · Carry
+          </p>
         </section>
 
         {/* Suggestions */}
@@ -107,6 +121,12 @@ const Index = () => {
         onClose={() => setOpen(false)}
         mood={mood}
         initialPrompt={initial}
+      />
+
+      <WorkflowJourney
+        open={journeyOpen}
+        onClose={() => setJourneyOpen(false)}
+        mood={mood}
       />
     </main>
   );
