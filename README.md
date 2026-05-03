@@ -20,8 +20,8 @@ Through mood-based conversations, calming recipes, and curated music, Aethel cre
 ---
 
 ## 🚀 Demo
-- **Live App:** [Serene Companion](https://peace-pal-guidance.lovable.app)  
-- **Video Walkthrough:** *(Add your demo link here)*
+- **Live App:** [Demo link of Aethel - AI stressFree companion](https://peace-pal-guidance.lovable.app)  
+- **Video Walkthrough:** *(https://youtu.be/Mb0Xo-37F-Y)*
 
 ---
 
