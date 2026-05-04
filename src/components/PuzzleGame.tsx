@@ -1,6 +1,84 @@
 import { useEffect, useMemo, useState } from "react";
 import { Sparkles, RotateCcw } from "lucide-react";
 
+const FIREWORK_COLORS = [
+  "#fbbf24",
+  "#f472b6",
+  "#a78bfa",
+  "#34d399",
+  "#60a5fa",
+  "#fb7185",
+  "#fde047",
+];
+
+type Burst = {
+  id: number;
+  top: string;
+  left: string;
+  delay: number;
+  color: string;
+};
+
+const buildBursts = (count: number): Burst[] =>
+  Array.from({ length: count }, (_, i) => ({
+    id: i,
+    top: `${10 + Math.random() * 60}%`,
+    left: `${10 + Math.random() * 80}%`,
+    delay: Math.random() * 2.4,
+    color: FIREWORK_COLORS[i % FIREWORK_COLORS.length],
+  }));
+
+const Fireworks = () => {
+  const bursts = useMemo(() => buildBursts(9), []);
+  return (
+    <div className="fixed inset-0 z-50 pointer-events-none overflow-hidden">
+      {bursts.map((b) => (
+        <div
+          key={b.id}
+          className="absolute"
+          style={{ top: b.top, left: b.left, animation: `firework-rise 0.6s ease-out ${b.delay}s both` }}
+        >
+          <div className="relative" style={{ animation: `firework-fade 2.4s ease-out ${b.delay + 0.6}s both` }}>
+            {Array.from({ length: 18 }).map((_, i) => {
+              const angle = (i / 18) * Math.PI * 2;
+              const distance = 90 + Math.random() * 40;
+              const x = Math.cos(angle) * distance;
+              const y = Math.sin(angle) * distance;
+              return (
+                <span
+                  key={i}
+                  className="absolute block w-2 h-2 rounded-full"
+                  style={{
+                    background: b.color,
+                    boxShadow: `0 0 12px ${b.color}, 0 0 24px ${b.color}`,
+                    animation: `firework-particle 2s cubic-bezier(0.15,0.7,0.4,1) ${b.delay + 0.6}s both`,
+                    ["--tx" as never]: `${x}px`,
+                    ["--ty" as never]: `${y}px`,
+                  }}
+                />
+              );
+            })}
+          </div>
+        </div>
+      ))}
+      <style>{`
+        @keyframes firework-rise {
+          0% { transform: translateY(40vh) scale(0.4); opacity: 0; }
+          100% { transform: translateY(0) scale(1); opacity: 1; }
+        }
+        @keyframes firework-particle {
+          0% { transform: translate(0, 0) scale(1); opacity: 1; }
+          100% { transform: translate(var(--tx), var(--ty)) scale(0.2); opacity: 0; }
+        }
+        @keyframes firework-fade {
+          0%, 80% { opacity: 1; }
+          100% { opacity: 0; }
+        }
+      `}</style>
+    </div>
+  );
+};
+
 const SYMBOLS = ["☾", "✦", "❀", "☘", "✿", "❉", "✧", "❄"];
 
 type Card = { id: number; symbol: string; flipped: boolean; matched: boolean };
@@ -114,12 +192,20 @@ export const PuzzleGame = () => {
       </div>
 
       {won && (
-        <div className="mt-8 text-center animate-fade-up">
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-candle/40 bg-candle/10 text-candle text-xs tracking-[0.3em] uppercase">
-            <Sparkles className="size-3" />
-            Stillness found in {moves} moves
+        <>
+          <Fireworks key={moves} />
+          <div className="mt-10 text-center animate-fade-up">
+            <div className="inline-flex flex-col items-center gap-3 px-8 py-6 rounded-3xl border border-candle/40 bg-candle/10 backdrop-blur-sm">
+              <Sparkles className="size-8 text-candle drop-shadow-[0_0_12px_hsl(var(--candle))]" />
+              <h3 className="font-serif italic text-3xl sm:text-4xl text-candle">
+                Magnificent!
+              </h3>
+              <p className="text-ash text-sm max-w-[36ch] leading-relaxed">
+                You found stillness in <span className="text-candle tabular-nums">{moves}</span> moves. Your mind shines bright tonight.
+              </p>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </section>
   );
