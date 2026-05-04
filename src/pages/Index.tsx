@@ -5,6 +5,7 @@ import { SuggestionGrid } from "@/components/SuggestionGrid";
 import { ConversationPanel } from "@/components/ConversationPanel";
 import { RecipesSection } from "@/components/RecipesSection";
 import { SongsSection } from "@/components/SongsSection";
+import { PuzzleGame } from "@/components/PuzzleGame";
 import { WorkflowJourney } from "@/components/WorkflowJourney";
 import { Sparkles } from "lucide-react";
 
