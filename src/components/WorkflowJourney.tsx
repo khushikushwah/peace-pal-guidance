@@ -65,7 +65,12 @@ export function WorkflowJourney({
     try {
       if (step === 0) { setReflection(await callStep("reflect")); setStep(1); }
       else if (step === 1) { setBreathing(await callStep("breathe")); setStep(2); }
-      else if (step === 2) { setActivities(await callStep("activity")); setStep(3); }
+      else if (step === 2) {
+        const res = await callStep("activity");
+        const list: Activity[] = Array.isArray(res) ? res : (res?.activities ?? []);
+        setActivities(list);
+        setStep(3);
+      }
       else if (step === 3) { setAffirmation(await callStep("affirm")); setStep(4); }
     } catch (e: any) {
       toast({ title: "A pause", description: e?.message ?? "Please try again.", variant: "destructive" });
