@@ -192,12 +192,20 @@ export const PuzzleGame = () => {
       </div>
 
       {won && (
-        <div className="mt-8 text-center animate-fade-up">
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-candle/40 bg-candle/10 text-candle text-xs tracking-[0.3em] uppercase">
-            <Sparkles className="size-3" />
-            Stillness found in {moves} moves
+        <>
+          <Fireworks key={moves} />
+          <div className="mt-10 text-center animate-fade-up">
+            <div className="inline-flex flex-col items-center gap-3 px-8 py-6 rounded-3xl border border-candle/40 bg-candle/10 backdrop-blur-sm">
+              <Sparkles className="size-8 text-candle drop-shadow-[0_0_12px_hsl(var(--candle))]" />
+              <h3 className="font-serif italic text-3xl sm:text-4xl text-candle">
+                Magnificent!
+              </h3>
+              <p className="text-ash text-sm max-w-[36ch] leading-relaxed">
+                You found stillness in <span className="text-candle tabular-nums">{moves}</span> moves. Your mind shines bright tonight.
+              </p>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </section>
   );
